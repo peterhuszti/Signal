@@ -11,7 +11,7 @@ public class Signal<T> implements Runnable {
 	}
 	
 	public static <S> Signal<S> createConstSignal(S value) {
-		Signal<S> result = new Signal<S>(value, ((a) -> Bead.print(a)));
+		Signal<S> result = new Signal<S>(value, ((a) -> System.out.println(a)));
 		
 		return result;
 	}
