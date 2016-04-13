@@ -1,7 +1,12 @@
 package beadando;
 
-@FunctionalInterface
-public interface Action<T> {
+public class Action<T> {
 
-	public void act(T t);
+	public Boolean isConst = true;
+	
+	/*public T act(T value) {
+		return value;
+	}*/
+	
+	public Action() {}
 }

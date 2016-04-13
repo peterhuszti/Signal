@@ -9,9 +9,9 @@ public class TimeSignal {
 	
 	public static File file = new File("console.txt");
 	
-	public static Signal<Integer> every(int freq, TimeUnit tu) {		
+	/*public static Signal<Integer> every(int freq, TimeUnit tu) {		
 		return Signal.createSignal(0, a->imhere(a, freq, tu));
-	}
+	}*/
 
 	private static void imhere(int a, int freq, TimeUnit tu) {
 		if (file.exists()) {

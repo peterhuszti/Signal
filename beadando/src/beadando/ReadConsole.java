@@ -12,13 +12,13 @@ public class ReadConsole {
 	public static BufferedReader br = null;
 	public static File file = new File("console.txt");
 	
-	public static Signal<String> console() {
+	/*public static Signal<String> console() {
 		if(br == null) {
 			br = new BufferedReader(new InputStreamReader(System.in));
 		}
 		
 		return Signal.createSignal("", a->readLastLine());
-	}
+	}*/
 
 	private static void readLastLine() {
 		if (file.exists()) {

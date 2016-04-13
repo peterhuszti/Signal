@@ -3,16 +3,34 @@ package beadando;
 public class Bead {
 	
 	public static void main(String[] args) {
-		/*Signal<Integer> signal = Signal.createConstSignal(42); 
-		Signal<Integer> signal2 = Signal.createConstSignal(42); 
-		signal = signal.map(a->a+1);
-		signal = signal.map(a->a+1);
-		signal.action.act(signal.getLastValue());
-		signal = signal.join(signal2, (a,b)->Signal.createConstSignal(a.getLastValue().intValue()+b.getLastValue().intValue()));
-		signal.action.act(signal.getLastValue());*/
 		
-		(new Thread(TimeSignal.every(1, TimeUnit.SECOND))).start();
-		(new Thread(ReadConsole.console())).start();
+	/*	(new Thread(TimeSignal.every(1, TimeUnit.SECOND))).start();
+		(new Thread(ReadConsole.console())).start();*/
+		
+		
+//	MAP TEST
+		Signal<Integer> s = Signal.createConstSignal(1);
+		System.out.println(s.getLastValue());
+		
+		Signal<Integer> x = s.map(a -> a+1);
+		System.out.println(x.getLastValue());
+		
+		s.changeValue(2, false);
+		System.out.println(s.getLastValue());
+		System.out.println(x.getLastValue());
+
+		
+	/*	Signal<Integer> s = Signal.createConstSignal(1);
+		System.out.println(s.getLastValue());
+		
+		Signal<String> t = Signal.createConstSignal("a");
+		System.out.println(t.getLastValue());
+		
+		Signal<String> x = s.join(t, (a,b) -> a+b);
+		System.out.println(x.getLastValue());
+		
+		t.changeValue("b", false);
+		System.out.println(x.getLastValue());*/
 	}
 
 }
