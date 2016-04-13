@@ -1,7 +1,7 @@
 package beadando;
 
 @FunctionalInterface
-public interface Mapper<T> {
+public interface Mapper<RES, PAR> {
 
-	public T map(T input);
+	public RES map(PAR input);
 }

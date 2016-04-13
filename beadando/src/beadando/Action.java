@@ -1,12 +1,7 @@
 package beadando;
 
-public class Action<T> {
+public abstract class Action {
 
 	public Boolean isConst = true;
 	
-	/*public T act(T value) {
-		return value;
-	}*/
-	
-	public Action() {}
 }

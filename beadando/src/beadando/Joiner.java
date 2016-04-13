@@ -1,7 +1,7 @@
 package beadando;
 
 @FunctionalInterface
-public interface Joiner<S, V, W> {
+public interface Joiner<RES, LEFT, RIGHT> {
 
-	public S join(V t1, W t2);
+	public RES join(LEFT t1, RIGHT t2);
 }
