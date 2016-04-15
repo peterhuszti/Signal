@@ -45,13 +45,15 @@ public class Bead {
 		System.out.println(x3.getLastValue());
 */
 //
-	/*	Signal<Integer> metronome = TimeSignal.every(1, TimeUnit.SECOND);
+		Signal<Integer> metronome = TimeSignal.every(1, TimeUnit.SECOND);
 		(new Thread((MetronomeSignal<Integer>) metronome)).start();
+		
+		Signal<Integer> counter = metronome.accumulate((myState, tick) -> myState+1, 0);
 		
 		Signal<String> reader = ReaderSignal.createReaderSignal();
 		(new Thread((ReaderSignal<String>) reader)).start();
 		
-		Signal<String> writer = metronome.join(reader, (a,b)->{System.out.println(a + " - " + b); return null;});*/
+		Signal<String> writer = counter.join(reader, (a,b)->{System.out.println(a + " - " + b); return null;});
 	}
 
 }
