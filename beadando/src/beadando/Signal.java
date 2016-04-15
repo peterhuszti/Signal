@@ -56,11 +56,11 @@ public class Signal<TYPE> {
 		lastValue = (TYPE) newValue;
 		
 		for(int i=0; i<dependants.size(); ++i) {
-			dependants.get(i).notifyME();
+			dependants.get(i).recalcValue();
 		}
 	}
 	
-	public void notifyME() {}
+	public void recalcValue() {}
 
 	public TYPE getLastValue() {
 		return lastValue;

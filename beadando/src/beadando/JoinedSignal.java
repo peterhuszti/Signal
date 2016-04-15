@@ -10,17 +10,13 @@ public class JoinedSignal<RES, LEFT, RIGHT> extends Signal<RES> {
 		super(value);
 	}
 	
-	public <T> void changeValue() {
+	@Override
+	public void recalcValue() {
 		lastValue = creatingAction.join((LEFT) leftParent.getLastValue(), (RIGHT) rightParent.getLastValue());
 		
 		for(int i=0; i<dependants.size(); ++i) {
-			dependants.get(i).notifyME();
+			dependants.get(i).recalcValue();
 		}
-	}
-	
-	@Override
-	public void notifyME() {
-		changeValue();
 	}
 	
 }

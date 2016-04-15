@@ -9,17 +9,13 @@ public class AccumulatedSignal<TYPE, ORIG> extends Signal<TYPE> {
 		super(value);
 	}
 	
-	public void changeValue() {
+	@Override
+	public void recalcValue() {
 		lastValue = creatingAction.accumulate(lastValue, parent.getLastValue());
 		
 		for(int i=0; i<dependants.size(); ++i) {
-			dependants.get(i).notifyME();
+			dependants.get(i).recalcValue();
 		}
-	}
-
-	@Override
-	public void notifyME() {
-		changeValue();
 	}
 	
 }
