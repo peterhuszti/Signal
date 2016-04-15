@@ -41,17 +41,26 @@ public class Signal<TYPE> {
 		
 		return result;
 	}
-
 	
-	public <T> void changeValue(T newValue) {
+	public <RES> AccumulatedSignal<RES, TYPE> accumulate(Accumulater<RES, TYPE> accumulate, RES startState) {
+		AccumulatedSignal<RES, TYPE> result = new AccumulatedSignal<RES, TYPE>(startState);
+		
+		result.creatingAction = accumulate;
+		result.parent = this;
+		dependants.add(result);
+		
+		return result;
+	}
+	
+	public <T> void changeValue(TYPE newValue) {
 		lastValue = (TYPE) newValue;
 		
 		for(int i=0; i<dependants.size(); ++i) {
-			dependants.get(i).notify((Signal<T>)this, newValue);
+			dependants.get(i).notifyME();
 		}
 	}
-
-	public <T> void notify(Signal<T> parent, T newValue) {}
+	
+	public void notifyME() {}
 
 	public TYPE getLastValue() {
 		return lastValue;

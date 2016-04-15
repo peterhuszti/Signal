@@ -21,13 +21,12 @@ public class MetronomeSignal<TYPE> extends Signal<Integer> implements Runnable {
 	@Override
 	public void run() {
 		while(true) {
-			changeValue(lastValue + tu.getTime()/1000);
+			changeValue(lastValue);
 			try {
-				Thread.sleep(freq);
+				Thread.sleep(freq * tu.getTime());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			//System.out.println(lastValue/1000);
 		}
 	}
 }

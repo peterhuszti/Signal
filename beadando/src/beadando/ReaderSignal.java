@@ -30,7 +30,6 @@ public class ReaderSignal<TYPE> extends Signal<String> implements Runnable {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-		//	System.out.println(lastValue);
 		}
 	}
 

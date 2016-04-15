@@ -1,7 +1,7 @@
 package beadando;
 
 @FunctionalInterface
-public interface Accumulater<T, V> {
+public interface Accumulater<RES, ORIG> {
 
-	public T accumulate(V oldState, T originalSignalState); 
+	public RES accumulate(RES oldState, ORIG originalSignalState); 
 }

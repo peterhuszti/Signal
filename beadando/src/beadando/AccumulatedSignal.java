@@ -1,16 +1,25 @@
-/*package beadando;
+package beadando;
 
-public class AccumulatedSignal<T, V> extends Signal<T> {
+public class AccumulatedSignal<TYPE, ORIG> extends Signal<TYPE> {
 
-	public Accumulater<T, V> action;
+	protected Accumulater<TYPE, ORIG> creatingAction = null;
+	protected Signal<ORIG> parent = null;
 	
-	protected AccumulatedSignal(T value, Accumulater<T, V> action) {	
+	protected AccumulatedSignal(TYPE value) {
 		super(value);
-		
-		this.action = action;
 	}
 	
-	public void changeValue(T newValue, Boolean isRight) {
+	public void changeValue() {
+		lastValue = creatingAction.accumulate(lastValue, parent.getLastValue());
 		
-	}*/
-//}
+		for(int i=0; i<dependants.size(); ++i) {
+			dependants.get(i).notifyME();
+		}
+	}
+
+	@Override
+	public void notifyME() {
+		changeValue();
+	}
+	
+}
